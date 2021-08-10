@@ -23,5 +23,18 @@ namespace AddressBook
             List<Class.AddressBook> addressBooks = AddressDB.GetAddressBooks();
             addressListBox.DataSource = addressBooks.ToList();
         }
+
+        private void AddAddressBook_Click(object sender, EventArgs e)
+        {
+            CreateAddressBook createAddressBook = new CreateAddressBook();
+            createAddressBook.ShowDialog();
+            UpdateListBox();
+        }
+
+        private void UpdateListBox()
+        {
+            List<Class.AddressBook> addressBooks = AddressDB.GetAddressBooks();
+            addressListBox.DataSource = addressBooks;
+        }
     }
 }
