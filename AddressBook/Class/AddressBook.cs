@@ -12,6 +12,9 @@ namespace AddressBook.Class
         [Key]
         public int AddressBookID { get; set; }
 
+        [Required]
+        public string AddressBookName { get; set; }
+
         public List<Person> People { get; set; } = new List<Person>();
     }
 }
