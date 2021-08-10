@@ -59,6 +59,12 @@
     <Compile Include="Class\AddressContext.cs" />
     <Compile Include="Class\AddressDB.cs" />
     <Compile Include="Class\Person.cs" />
+    <Compile Include="CreateAddressBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateAddressBook.Designer.cs">
+      <DependentUpon>CreateAddressBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CreateAddressBook.resx">
+      <DependentUpon>CreateAddressBook.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
