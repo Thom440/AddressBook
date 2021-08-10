@@ -68,11 +68,18 @@
     <Compile Include="Migrations\202108101800235_Initial.Designer.cs">
       <DependentUpon>202108101800235_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108101814587_AddressBookName.cs" />
+    <Compile Include="Migrations\202108101814587_AddressBookName.Designer.cs">
+      <DependentUpon>202108101814587_AddressBookName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Migrations\202108101800235_Initial.resx">
       <DependentUpon>202108101800235_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108101814587_AddressBookName.resx">
+      <DependentUpon>202108101814587_AddressBookName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
