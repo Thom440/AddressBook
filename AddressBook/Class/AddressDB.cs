@@ -21,5 +21,14 @@ namespace AddressBook.Class
                 return addressBooks;
             }
         }
+
+        public static void AddAddressBook(AddressBook book)
+        {
+            using (AddressContext context = new AddressContext())
+            {
+                context.AddressBooks.Add(book);
+                context.SaveChanges();
+            }
+        }
     }
 }
