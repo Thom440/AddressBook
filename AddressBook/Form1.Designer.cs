@@ -51,6 +51,7 @@ namespace AddressBook
             this.addAddressBook.TabIndex = 1;
             this.addAddressBook.Text = "Add New Address Book";
             this.addAddressBook.UseVisualStyleBackColor = true;
+            this.addAddressBook.Click += new System.EventHandler(this.AddAddressBook_Click);
             // 
             // openAddressBook
             // 
