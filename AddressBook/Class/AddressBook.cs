@@ -16,5 +16,10 @@ namespace AddressBook.Class
         public string AddressBookName { get; set; }
 
         public List<Person> People { get; set; } = new List<Person>();
+
+        public override string ToString()
+        {
+            return AddressBookName;
+        }
     }
 }

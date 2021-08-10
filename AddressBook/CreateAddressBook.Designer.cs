@@ -59,6 +59,7 @@ namespace AddressBook
             this.createBtn.TabIndex = 2;
             this.createBtn.Text = "Create";
             this.createBtn.UseVisualStyleBackColor = true;
+            this.createBtn.Click += new System.EventHandler(this.CreateBtn_Click);
             // 
             // cancelBtn
             // 
@@ -68,6 +69,7 @@ namespace AddressBook
             this.cancelBtn.TabIndex = 3;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // CreateAddressBook
             // 
