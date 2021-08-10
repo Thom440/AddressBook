@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Class\AddressBook.cs" />
     <Compile Include="Class\AddressContext.cs" />
+    <Compile Include="Class\AddressDB.cs" />
     <Compile Include="Class\Person.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

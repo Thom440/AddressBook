@@ -81,6 +81,7 @@ namespace AddressBook
             this.Controls.Add(this.addressListBox);
             this.Name = "Form1";
             this.Text = "Address Book";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
