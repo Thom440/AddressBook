@@ -30,7 +30,14 @@ namespace AddressBook.Class
         [Required]
         public string ZipCode { get; set; }
 
-        public List<AddressBook> AddressBooks { get; set; } = new List<AddressBook>();
+        //public List<AddressBook> AddressBooks { get; set; } = new List<AddressBook>();
+
+        public AddressBook AddressBook { get; set; }
+
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName}";
+        }
 
         public string PrintMailingLabel()
         {

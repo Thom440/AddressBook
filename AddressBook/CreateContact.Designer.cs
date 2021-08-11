@@ -40,7 +40,7 @@ namespace AddressBook
             this.label5 = new System.Windows.Forms.Label();
             this.stateTxtBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.zipCodeTxtBox = new System.Windows.Forms.TextBox();
             this.createContactBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -134,13 +134,13 @@ namespace AddressBook
             this.label6.TabIndex = 10;
             this.label6.Text = "Zip Code";
             // 
-            // textBox1
+            // zipCodeTxtBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(78, 154);
-            this.textBox1.MaxLength = 5;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(206, 20);
-            this.textBox1.TabIndex = 11;
+            this.zipCodeTxtBox.Location = new System.Drawing.Point(78, 154);
+            this.zipCodeTxtBox.MaxLength = 5;
+            this.zipCodeTxtBox.Name = "zipCodeTxtBox";
+            this.zipCodeTxtBox.Size = new System.Drawing.Size(206, 20);
+            this.zipCodeTxtBox.TabIndex = 11;
             // 
             // createContactBtn
             // 
@@ -150,6 +150,7 @@ namespace AddressBook
             this.createContactBtn.TabIndex = 12;
             this.createContactBtn.Text = "Create Contact";
             this.createContactBtn.UseVisualStyleBackColor = true;
+            this.createContactBtn.Click += new System.EventHandler(this.CreateContactBtn_Click);
             // 
             // cancelBtn
             // 
@@ -159,6 +160,7 @@ namespace AddressBook
             this.cancelBtn.TabIndex = 13;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // CreateContact
             // 
@@ -167,7 +169,7 @@ namespace AddressBook
             this.ClientSize = new System.Drawing.Size(303, 240);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.createContactBtn);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.zipCodeTxtBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.stateTxtBox);
             this.Controls.Add(this.label5);
@@ -199,7 +201,7 @@ namespace AddressBook
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox stateTxtBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox zipCodeTxtBox;
         private System.Windows.Forms.Button createContactBtn;
         private System.Windows.Forms.Button cancelBtn;
     }
