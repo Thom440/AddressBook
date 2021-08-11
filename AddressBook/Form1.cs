@@ -75,6 +75,8 @@ namespace AddressBook
                 people = people.OrderBy(p => p.LastName)
                     .ThenBy(p => p.FirstName).ToList();
                 addressListBox.DataSource = people;
+
+                this.Text = $"{currentBook.AddressBookName}";
             }
             
         }
@@ -132,6 +134,15 @@ namespace AddressBook
 
             List<Class.AddressBook> addressBooks = AddressDB.GetAddressBooks();
             addressListBox.DataSource = addressBooks;
+
+            this.Text = "Address Book";
+        }
+
+        private void OpenContactBtn_Click(object sender, EventArgs e)
+        {
+            Person person = (Person)addressListBox.SelectedItem;
+            ViewContact viewContact = new ViewContact(person);
+            viewContact.ShowDialog();
         }
     }
 }
