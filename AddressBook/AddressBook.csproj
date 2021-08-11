@@ -78,6 +78,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MailingLabel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MailingLabel.Designer.cs">
+      <DependentUpon>MailingLabel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202108101800235_Initial.cs" />
     <Compile Include="Migrations\202108101800235_Initial.Designer.cs">
       <DependentUpon>202108101800235_Initial.cs</DependentUpon>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MailingLabel.resx">
+      <DependentUpon>MailingLabel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108101800235_Initial.resx">
       <DependentUpon>202108101800235_Initial.cs</DependentUpon>

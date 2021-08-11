@@ -179,6 +179,7 @@ namespace AddressBook
             this.mailLblBtn.TabIndex = 28;
             this.mailLblBtn.Text = "View Mail Label";
             this.mailLblBtn.UseVisualStyleBackColor = true;
+            this.mailLblBtn.Click += new System.EventHandler(this.MailLblBtn_Click);
             // 
             // saveBtn
             // 

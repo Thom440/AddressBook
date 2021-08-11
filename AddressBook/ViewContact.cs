@@ -111,5 +111,11 @@ namespace AddressBook
                 MessageBox.Show("You have not made any changes");
             }
         }
+
+        private void MailLblBtn_Click(object sender, EventArgs e)
+        {
+            MailingLabel mailingLabel = new MailingLabel(currentPerson);
+            mailingLabel.ShowDialog();
+        }
     }
 }

@@ -41,7 +41,7 @@ namespace AddressBook.Class
 
         public string PrintMailingLabel()
         {
-            return $"{FirstName} {LastName} \n {Address} \n {City} {State} {ZipCode}";
+            return $"{FirstName} {LastName} \n{Address} \n{City} {State} {ZipCode}";
         }
     }
 }
