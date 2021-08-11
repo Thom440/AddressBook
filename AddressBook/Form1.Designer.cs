@@ -113,6 +113,7 @@ namespace AddressBook
             this.openContactBtn.Text = "Open Contact";
             this.openContactBtn.UseVisualStyleBackColor = true;
             this.openContactBtn.Visible = false;
+            this.openContactBtn.Click += new System.EventHandler(this.OpenContactBtn_Click);
             // 
             // deleteContactBtn
             // 

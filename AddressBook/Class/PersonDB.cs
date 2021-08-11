@@ -37,5 +37,35 @@ namespace AddressBook.Class
                 return false;
             }
         }
+
+        public static bool CheckForChanges(Person person)
+        {
+            using(AddressContext context = new AddressContext())
+            {
+                Person currentPerson =
+                    (from p in context.People
+                     where p.FirstName == person.FirstName && p.LastName == person.LastName
+                     && p.Address == person.Address && p.City == person.City && p.State == person.State
+                     && p.ZipCode == person.ZipCode && p.AddressBook.AddressBookID == person.AddressBook.AddressBookID
+                     select p).SingleOrDefault();
+                if (currentPerson == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public static void SaveChanges(Person person)
+        {
+            using(AddressContext context = new AddressContext())
+            {
+                context.Entry(person).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
     }
 }
