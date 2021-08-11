@@ -13,6 +13,8 @@ namespace AddressBook
 {
     public partial class Form1 : Form
     {
+        private Class.AddressBook currentAddressBook = null;
+
         public Form1()
         {
             InitializeComponent();
@@ -68,7 +70,10 @@ namespace AddressBook
                 deleteContactBtn.Visible = true;
 
                 Class.AddressBook currentBook = AddressDB.GetAddressBook(addressBook.AddressBookName);
+                currentAddressBook = currentBook;
                 List<Person> people = currentBook.People;
+                people = people.OrderBy(p => p.LastName)
+                    .ThenBy(p => p.FirstName).ToList();
                 addressListBox.DataSource = people;
             }
             
@@ -76,7 +81,19 @@ namespace AddressBook
 
         private void CreateContactBtn_Click(object sender, EventArgs e)
         {
+            CreateContact createContact = new CreateContact();
+            createContact.CurrentAddressBook = currentAddressBook;
+            createContact.ShowDialog();
+            UpdateContactList(currentAddressBook.AddressBookName);
+        }
 
+        private void UpdateContactList(string addressBookName)
+        {
+            Class.AddressBook addressBook = AddressDB.GetAddressBook(addressBookName);
+            List<Person> people = addressBook.People;
+            people = people.OrderBy(p => p.LastName)
+                .ThenBy(p => p.FirstName).ToList();
+            addressListBox.DataSource = people;
         }
 
         private void DeleteAddressBook_Click(object sender, EventArgs e)

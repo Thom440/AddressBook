@@ -41,10 +41,12 @@ namespace AddressBook
             // 
             // addressListBox
             // 
+            this.addressListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addressListBox.FormattingEnabled = true;
+            this.addressListBox.ItemHeight = 31;
             this.addressListBox.Location = new System.Drawing.Point(13, 13);
             this.addressListBox.Name = "addressListBox";
-            this.addressListBox.Size = new System.Drawing.Size(402, 420);
+            this.addressListBox.Size = new System.Drawing.Size(402, 407);
             this.addressListBox.TabIndex = 0;
             // 
             // addAddressBook

@@ -59,6 +59,7 @@
     <Compile Include="Class\AddressContext.cs" />
     <Compile Include="Class\AddressDB.cs" />
     <Compile Include="Class\Person.cs" />
+    <Compile Include="Class\PersonDB.cs" />
     <Compile Include="CreateAddressBook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +86,10 @@
     <Compile Include="Migrations\202108101814587_AddressBookName.Designer.cs">
       <DependentUpon>202108101814587_AddressBookName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108110033147_OneToMany.cs" />
+    <Compile Include="Migrations\202108110033147_OneToMany.Designer.cs">
+      <DependentUpon>202108110033147_OneToMany.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108101814587_AddressBookName.resx">
       <DependentUpon>202108101814587_AddressBookName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108110033147_OneToMany.resx">
+      <DependentUpon>202108110033147_OneToMany.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

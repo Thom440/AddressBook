@@ -44,6 +44,18 @@ namespace AddressBook.Class
             }
         }
 
+        public static AddressBook GetCurrentAddressBook(int id)
+        {
+            using(AddressContext context = new AddressContext())
+            {
+                AddressBook addressBook =
+                    (from a in context.AddressBooks
+                     where a.AddressBookID == id
+                     select a).SingleOrDefault();
+                return addressBook;
+            }
+        }
+
         public static void Delete(string name)
         {
             using(AddressContext context = new AddressContext())
