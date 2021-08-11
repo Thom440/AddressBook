@@ -106,5 +106,32 @@ namespace AddressBook
             }
             
         }
+
+        private void CloseAddressBookBtn_Click(object sender, EventArgs e)
+        {
+            openAddressBook.Enabled = true;
+            openAddressBook.Visible = true;
+
+            addAddressBook.Enabled = true;
+            addAddressBook.Visible = true;
+
+            deleteAddressBook.Enabled = true;
+            deleteAddressBook.Visible = true;
+
+            createContactBtn.Enabled = false;
+            createContactBtn.Visible = false;
+
+            openContactBtn.Enabled = false;
+            openContactBtn.Visible = false;
+
+            closeAddressBookBtn.Enabled = false;
+            closeAddressBookBtn.Visible = false;
+
+            deleteContactBtn.Enabled = false;
+            deleteContactBtn.Visible = false;
+
+            List<Class.AddressBook> addressBooks = AddressDB.GetAddressBooks();
+            addressListBox.DataSource = addressBooks;
+        }
     }
 }

@@ -89,6 +89,7 @@ namespace AddressBook
             this.closeAddressBookBtn.Text = "Close Address Book";
             this.closeAddressBookBtn.UseVisualStyleBackColor = true;
             this.closeAddressBookBtn.Visible = false;
+            this.closeAddressBookBtn.Click += new System.EventHandler(this.CloseAddressBookBtn_Click);
             // 
             // createContactBtn
             // 
