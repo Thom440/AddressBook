@@ -20,10 +20,12 @@ namespace AddressBook
 
         private void CreateBtn_Click(object sender, EventArgs e)
         {
-            if (addressBookNameTxtBox.Text == string.Empty)
+            // Checks to make sure that the text box is not empty or white space
+            if (addressBookNameTxtBox.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("Must enter a name for the Address Book");
             }
+            // Checking to make sure address book does not already exist
             else if (!AddressDB.CheckForExistingAddressBook(addressBookNameTxtBox.Text))
             {
                 Class.AddressBook addressBook = new Class.AddressBook()
@@ -39,6 +41,9 @@ namespace AddressBook
             }
         }
 
+        /// <summary>
+        /// Closes the form
+        /// </summary>
         private void CancelBtn_Click(object sender, EventArgs e)
         {
             Close();
