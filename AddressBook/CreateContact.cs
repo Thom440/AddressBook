@@ -13,17 +13,26 @@ namespace AddressBook
 {
     public partial class CreateContact : Form
     {
+        /// <summary>
+        /// Allows the address book to be accessed by all methods
+        /// </summary>
         public Class.AddressBook CurrentAddressBook { get; set; }
         public CreateContact()
         {
             InitializeComponent();
-    }
+        }
 
+        /// <summary>
+        /// Closes the form
+        /// </summary>
         private void CancelBtn_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        /// <summary>
+        /// Creates a contact based off of user input
+        /// </summary>
         private void CreateContactBtn_Click(object sender, EventArgs e)
         {
             string firstName = firstNameTxtBox.Text;
@@ -32,6 +41,8 @@ namespace AddressBook
             string city = cityTxtBox.Text;
             string state = stateTxtBox.Text;
             string zipCode = zipCodeTxtBox.Text;
+
+            // If there is an empty field a message will show alerting the user
             if (firstName == string.Empty || lastName == string.Empty || address == string.Empty ||
                 city == string.Empty || state == string.Empty || zipCode == string.Empty)
             {
@@ -49,8 +60,11 @@ namespace AddressBook
                     ZipCode = zipCode
                 };
                 person.AddressBook = AddressDB.GetCurrentAddressBook(CurrentAddressBook.AddressBookID);
+
+                // Checks to see if that contact is already in the database
                 if (PersonDB.CheckForExistingPerson(person, CurrentAddressBook.AddressBookID))
                 {
+                    // Prompts the user if the want to load the existing contact
                     DialogResult result = MessageBox.Show("That person already exists. \nDo you want to open that contact?", "Confirmation", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
@@ -60,6 +74,9 @@ namespace AddressBook
                     }
                     else
                     {
+                        // Prompts the user if they want to save the contact
+                        // anyway even though there is a contact with that name
+                        // already in the address book
                         result = MessageBox.Show("Do You want to save anyway?", "Confirmation", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
