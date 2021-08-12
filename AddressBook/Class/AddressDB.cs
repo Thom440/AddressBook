@@ -32,13 +32,13 @@ namespace AddressBook.Class
             }
         }
 
-        public static AddressBook GetAddressBook(string name)
+        public static AddressBook GetAddressBook(int id)
         {
             using(AddressContext context = new AddressContext())
             {
                 AddressBook addressBook =
                     (from a in context.AddressBooks
-                     where a.AddressBookName == name
+                     where a.AddressBookID == id
                      select a).Include(nameof(AddressBook.People)).SingleOrDefault();
                 return addressBook;
             }
@@ -56,17 +56,24 @@ namespace AddressBook.Class
             }
         }
 
-        public static void Delete(string name)
+        public static void Delete(AddressBook addressBook)
+        {
+            using(AddressContext context = new AddressContext())
+            {
+                context.Entry(addressBook).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
+        }
+
+        public static bool CheckForExistingAddressBook(string name)
         {
             using(AddressContext context = new AddressContext())
             {
                 AddressBook addressBook =
                     (from a in context.AddressBooks
-                     where a.AddressBookName == name
+                     where a.AddressBookName.Equals(name, StringComparison.InvariantCultureIgnoreCase)
                      select a).SingleOrDefault();
-
-                context.Entry(addressBook).State = EntityState.Deleted;
-                context.SaveChanges();
+                return addressBook != null;
             }
         }
     }

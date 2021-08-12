@@ -24,7 +24,7 @@ namespace AddressBook
             {
                 MessageBox.Show("Must enter a name for the Address Book");
             }
-            else
+            else if (!AddressDB.CheckForExistingAddressBook(addressBookNameTxtBox.Text))
             {
                 Class.AddressBook addressBook = new Class.AddressBook()
                 {
@@ -32,6 +32,10 @@ namespace AddressBook
                 };
                 AddressDB.AddAddressBook(addressBook);
                 Close();
+            }
+            else
+            {
+                MessageBox.Show("An Address Book with that name already exists");
             }
         }
 

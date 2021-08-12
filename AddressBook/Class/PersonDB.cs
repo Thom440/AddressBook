@@ -67,5 +67,17 @@ namespace AddressBook.Class
                 context.SaveChanges();
             }
         }
+
+        public static List<Person> GetAllPeople(int id)
+        {
+            using(AddressContext context = new AddressContext())
+            {
+                List<Person> people =
+                    (from p in context.People
+                     where p.AddressBook.AddressBookID == id
+                     select p).ToList();
+                return people;
+            }
+        }
     }
 }
