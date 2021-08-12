@@ -46,8 +46,9 @@ namespace AddressBook.Class
                     (from p in context.People
                      where p.FirstName == person.FirstName && p.LastName == person.LastName
                      && p.Address == person.Address && p.City == person.City && p.State == person.State
-                     && p.ZipCode == person.ZipCode && p.AddressBook.AddressBookID == person.AddressBook.AddressBookID
-                     select p).SingleOrDefault();
+                     && p.ZipCode == person.ZipCode && p.PersonID == person.PersonID
+                     && p.AddressBook.AddressBookID == person.AddressBook.AddressBookID
+                     select p).FirstOrDefault();
                 if (currentPerson == null)
                 {
                     return true;
@@ -77,6 +78,31 @@ namespace AddressBook.Class
                      where p.AddressBook.AddressBookID == id
                      select p).ToList();
                 return people;
+            }
+        }
+
+        public static Person GetExistingPerson(string firstName, string lastName, int id)
+        {
+            using(AddressContext context = new AddressContext())
+            {
+                Person person =
+                    (from p in context.People
+                     where p.FirstName == firstName && p.LastName == lastName &&
+                     p.AddressBook.AddressBookID == id
+                     select p).FirstOrDefault();
+                return person;
+            }
+        }
+
+        public static Person GetPerson(int id)
+        {
+            using(AddressContext context = new AddressContext())
+            {
+                Person person =
+                    (from p in context.People
+                     where p.PersonID == id
+                     select p).Include(a => a.AddressBook).SingleOrDefault();
+                return person;
             }
         }
     }

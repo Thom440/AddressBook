@@ -139,7 +139,8 @@ namespace AddressBook
 
         private void OpenContactBtn_Click(object sender, EventArgs e)
         {
-            Person person = (Person)addressListBox.SelectedItem;
+            Person p = (Person)addressListBox.SelectedItem;
+            Person person = PersonDB.GetPerson(p.PersonID);
             ViewContact viewContact = new ViewContact(person);
             viewContact.ShowDialog();
         }

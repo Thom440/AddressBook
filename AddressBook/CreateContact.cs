@@ -51,11 +51,23 @@ namespace AddressBook
                 person.AddressBook = AddressDB.GetCurrentAddressBook(CurrentAddressBook.AddressBookID);
                 if (PersonDB.CheckForExistingPerson(person, CurrentAddressBook.AddressBookID))
                 {
-                    DialogResult result = MessageBox.Show("That person already exists in this address book. \n Do You want to save anyway?", "Confirmation", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show("That person already exists. \nDo you want to open that contact?", "Confirmation", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        PersonDB.Add(person);
+                        ViewContact viewContact = new ViewContact(PersonDB.GetExistingPerson(person.FirstName, person.LastName, CurrentAddressBook.AddressBookID));
+                        viewContact.Show();
+                        Close();
                     }
+                    else
+                    {
+                        result = MessageBox.Show("Do You want to save anyway?", "Confirmation", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            PersonDB.Add(person);
+                            Close();
+                        }
+                    }
+                    
                 }
                 else
                 {
