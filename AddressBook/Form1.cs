@@ -69,14 +69,13 @@ namespace AddressBook
                 deleteContactBtn.Enabled = true;
                 deleteContactBtn.Visible = true;
 
-                Class.AddressBook currentBook = AddressDB.GetAddressBook(addressBook.AddressBookName);
-                currentAddressBook = currentBook;
-                List<Person> people = currentBook.People;
+                currentAddressBook = addressBook;
+                List<Person> people = PersonDB.GetAllPeople(addressBook.AddressBookID);
                 people = people.OrderBy(p => p.LastName)
                     .ThenBy(p => p.FirstName).ToList();
                 addressListBox.DataSource = people;
 
-                this.Text = $"{currentBook.AddressBookName}";
+                this.Text = $"{addressBook.AddressBookName}";
             }
             
         }
@@ -86,12 +85,12 @@ namespace AddressBook
             CreateContact createContact = new CreateContact();
             createContact.CurrentAddressBook = currentAddressBook;
             createContact.ShowDialog();
-            UpdateContactList(currentAddressBook.AddressBookName);
+            UpdateContactList(currentAddressBook.AddressBookID);
         }
 
-        private void UpdateContactList(string addressBookName)
+        private void UpdateContactList(int id)
         {
-            Class.AddressBook addressBook = AddressDB.GetAddressBook(addressBookName);
+            Class.AddressBook addressBook = AddressDB.GetAddressBook(id);
             List<Person> people = addressBook.People;
             people = people.OrderBy(p => p.LastName)
                 .ThenBy(p => p.FirstName).ToList();
@@ -104,7 +103,7 @@ namespace AddressBook
             DialogResult result = MessageBox.Show($"Do you want to delete {addressBook.AddressBookName}", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                AddressDB.Delete(addressBook.AddressBookName);
+                AddressDB.Delete(addressBook);
             }
             
         }
