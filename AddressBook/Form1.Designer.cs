@@ -125,6 +125,7 @@ namespace AddressBook
             this.deleteContactBtn.Text = "Delete Contact";
             this.deleteContactBtn.UseVisualStyleBackColor = true;
             this.deleteContactBtn.Visible = false;
+            this.deleteContactBtn.Click += new System.EventHandler(this.DeleteContactBtn_Click);
             // 
             // Form1
             // 

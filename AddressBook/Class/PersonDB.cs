@@ -105,5 +105,14 @@ namespace AddressBook.Class
                 return person;
             }
         }
+
+        public static void Delete(Person person)
+        {
+            using (AddressContext context = new AddressContext())
+            {
+                context.Entry(person).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
+        }
     }
 }
