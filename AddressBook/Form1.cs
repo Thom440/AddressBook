@@ -144,5 +144,16 @@ namespace AddressBook
             ViewContact viewContact = new ViewContact(person);
             viewContact.ShowDialog();
         }
+
+        private void DeleteContactBtn_Click(object sender, EventArgs e)
+        {
+            Person person = (Person)addressListBox.SelectedItem;
+            DialogResult result = MessageBox.Show($"Are you sure that you want to delete { person.FirstName} {person.LastName}", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                PersonDB.Delete(person);
+                UpdateContactList(currentAddressBook.AddressBookID);
+            }
+        }
     }
 }
