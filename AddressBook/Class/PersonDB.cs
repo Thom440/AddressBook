@@ -32,18 +32,11 @@ namespace AddressBook.Class
         {
             using(AddressContext context = new AddressContext())
             {
-                List<Person> people =
+                return
                     (from p in context.People
-                     where p.FirstName == newPerson.FirstName && p.LastName == newPerson.LastName
-                     select p).Include(a => a.AddressBook).ToList();
-                for (int i = 0; i < people.Count; i++)
-                {
-                    if (people[i].AddressBook.AddressBookID == addressBookID)
-                    {
-                        return true;
-                    }
-                }
-                return false;
+                     where p.FirstName == newPerson.FirstName && p.LastName == newPerson.LastName && 
+                     p.AddressBook.AddressBookID == addressBookID
+                     select p).Include(a => a.AddressBook).Any();
             }
         }
 
@@ -56,21 +49,13 @@ namespace AddressBook.Class
         {
             using(AddressContext context = new AddressContext())
             {
-                Person currentPerson =
+                return
                     (from p in context.People
                      where p.FirstName == person.FirstName && p.LastName == person.LastName
                      && p.Address == person.Address && p.City == person.City && p.State == person.State
                      && p.ZipCode == person.ZipCode && p.PersonID == person.PersonID
                      && p.AddressBook.AddressBookID == person.AddressBook.AddressBookID
-                     select p).FirstOrDefault();
-                if (currentPerson == null)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                     select p).Any();
             }
         }
 
