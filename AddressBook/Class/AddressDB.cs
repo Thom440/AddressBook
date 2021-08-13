@@ -18,10 +18,8 @@ namespace AddressBook.Class
             {
                 List<AddressBook> addressBooks =
                     (from a in context.AddressBooks
+                     orderby a.AddressBookName
                      select a).ToList();
-
-                addressBooks = addressBooks.OrderBy(a => a.AddressBookName).ToList();
-
                 return addressBooks;
             }
         }
