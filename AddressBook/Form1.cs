@@ -54,28 +54,15 @@ namespace AddressBook
         private void OpenAddressBook_Click(object sender, EventArgs e)
         {
             Class.AddressBook addressBook = (Class.AddressBook)addressListBox.SelectedItem;
-            
+
             // This block of code disables and enables buttons on the form
-            openAddressBook.Enabled = false;
-            openAddressBook.Visible = false;
-
-            addAddressBook.Enabled = false;
-            addAddressBook.Visible = false;
-
-            deleteAddressBook.Enabled = false;
-            deleteAddressBook.Visible = false;
-
-            createContactBtn.Enabled = true;
-            createContactBtn.Visible = true;
-
-            openContactBtn.Enabled = true;
-            openContactBtn.Visible = true;
-
-            closeAddressBookBtn.Enabled = true;
-            closeAddressBookBtn.Visible = true;
-
-            deleteContactBtn.Enabled = true;
-            deleteContactBtn.Visible = true;
+            SetVisibilityAndEnableDisableButton(openAddressBook, false);
+            SetVisibilityAndEnableDisableButton(addAddressBook, false);
+            SetVisibilityAndEnableDisableButton(deleteAddressBook, false);
+            SetVisibilityAndEnableDisableButton(createContactBtn, true);
+            SetVisibilityAndEnableDisableButton(openContactBtn, true);
+            SetVisibilityAndEnableDisableButton(closeAddressBookBtn, true);
+            SetVisibilityAndEnableDisableButton(deleteContactBtn, true);
 
             // Now that the address book is open it needs to be
             // available to other methods that need to reference the
@@ -136,26 +123,13 @@ namespace AddressBook
         private void CloseAddressBookBtn_Click(object sender, EventArgs e)
         {
             // This block of code enables and disables buttons on the form
-            openAddressBook.Enabled = true;
-            openAddressBook.Visible = true;
-
-            addAddressBook.Enabled = true;
-            addAddressBook.Visible = true;
-
-            deleteAddressBook.Enabled = true;
-            deleteAddressBook.Visible = true;
-
-            createContactBtn.Enabled = false;
-            createContactBtn.Visible = false;
-
-            openContactBtn.Enabled = false;
-            openContactBtn.Visible = false;
-
-            closeAddressBookBtn.Enabled = false;
-            closeAddressBookBtn.Visible = false;
-
-            deleteContactBtn.Enabled = false;
-            deleteContactBtn.Visible = false;
+            SetVisibilityAndEnableDisableButton(openAddressBook, true);
+            SetVisibilityAndEnableDisableButton(addAddressBook, true);
+            SetVisibilityAndEnableDisableButton(deleteAddressBook, true);
+            SetVisibilityAndEnableDisableButton(createContactBtn, false);
+            SetVisibilityAndEnableDisableButton(openContactBtn, false);
+            SetVisibilityAndEnableDisableButton(closeAddressBookBtn, false);
+            SetVisibilityAndEnableDisableButton(deleteContactBtn, false);
 
             // Changes the list box back to showing the address books
             List<Class.AddressBook> addressBooks = AddressDB.GetAddressBooks();
@@ -188,6 +162,18 @@ namespace AddressBook
                 PersonDB.Delete(person);
                 UpdateContactList(currentAddressBook.AddressBookID);
             }
+        }
+
+        /// <summary>
+        /// Sets button to visible or invisible based on boolean being passed in.
+        /// Sets Button to enabled or disabled based on boolean.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="value"></param>
+        private void SetVisibilityAndEnableDisableButton(Control control, bool value)
+        {
+            control.Enabled = value;
+            control.Visible = value;
         }
     }
 }

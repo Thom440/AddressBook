@@ -35,11 +35,8 @@ namespace AddressBook
 
             // Disabling and hiding buttons that are not needed
             // at the moment
-            saveBtn.Enabled = false;
-            saveBtn.Visible = false;
-
-            cancelBtn.Enabled = false;
-            cancelBtn.Visible = false;
+            SetVisibilityAndEnableDisableButton(saveBtn, false);
+            SetVisibilityAndEnableDisableButton(cancelBtn, false);
         }
 
         /// <summary>
@@ -56,20 +53,11 @@ namespace AddressBook
             zipCodeTxtBox.Enabled = true;
 
             // Enabling and disabling buttons for editing contact information
-            editContactBtn.Enabled = false;
-            editContactBtn.Visible = false;
-
-            closeBtn.Enabled = false;
-            closeBtn.Visible = false;
-
-            mailLblBtn.Enabled = false;
-            mailLblBtn.Visible = false;
-
-            saveBtn.Enabled = true;
-            saveBtn.Visible = true;
-
-            cancelBtn.Enabled = true;
-            cancelBtn.Visible = true;
+            SetVisibilityAndEnableDisableButton(editContactBtn, false);
+            SetVisibilityAndEnableDisableButton(closeBtn, false);
+            SetVisibilityAndEnableDisableButton(mailLblBtn, false);
+            SetVisibilityAndEnableDisableButton(saveBtn, true);
+            SetVisibilityAndEnableDisableButton(cancelBtn, true);
 
             // Changes the name of the form to edit contact
             this.Text = "Edit Contact";
@@ -98,20 +86,11 @@ namespace AddressBook
             zipCodeTxtBox.Enabled = false;
 
             // Enabling and disabling buttons
-            saveBtn.Enabled = false;
-            saveBtn.Visible = false;
-
-            cancelBtn.Enabled = false;
-            cancelBtn.Visible = false;
-
-            editContactBtn.Enabled = true;
-            editContactBtn.Visible = true;
-
-            closeBtn.Enabled = true;
-            closeBtn.Visible = true;
-
-            mailLblBtn.Enabled = true;
-            mailLblBtn.Visible = true;
+            SetVisibilityAndEnableDisableButton(saveBtn, false);
+            SetVisibilityAndEnableDisableButton(cancelBtn, false);
+            SetVisibilityAndEnableDisableButton(editContactBtn, true);
+            SetVisibilityAndEnableDisableButton(closeBtn, true);
+            SetVisibilityAndEnableDisableButton(mailLblBtn, true);
 
             // Changing the size of the form back to its original
             this.Size = new Size(317, 337);
@@ -130,10 +109,10 @@ namespace AddressBook
             currentPerson.ZipCode = zipCodeTxtBox.Text;
 
             // Verifies that information has changed
-            if (PersonDB.CheckForChanges(currentPerson))
+            if (!PersonDB.CheckForChanges(currentPerson))
             {
                 PersonDB.SaveChanges(currentPerson);
-                CancelBtn_Click(sender, e);
+                cancelBtn.PerformClick();
             }
             else
             {
@@ -148,6 +127,18 @@ namespace AddressBook
         {
             MailingLabel mailingLabel = new MailingLabel(currentPerson);
             mailingLabel.ShowDialog();
+        }
+
+        /// <summary>
+        /// Sets button to visible or invisible based on boolean being passed in.
+        /// Sets Button to enabled or disabled based on boolean.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="value"></param>
+        private void SetVisibilityAndEnableDisableButton(Control control, bool value)
+        {
+            control.Enabled = value;
+            control.Visible = value;
         }
     }
 }
