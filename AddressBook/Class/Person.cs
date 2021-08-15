@@ -55,6 +55,11 @@ namespace AddressBook.Class
         public string ZipCode { get; set; }
 
         /// <summary>
+        /// The contacts phone number
+        /// </summary>
+        public string PhoneNumber { get; set; }
+
+        /// <summary>
         /// The address book that the contact belongs to
         /// </summary>
         public AddressBook AddressBook { get; set; }
