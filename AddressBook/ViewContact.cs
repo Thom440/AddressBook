@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -32,6 +33,7 @@ namespace AddressBook
             cityTxtBox.Text = currentPerson.City;
             stateTxtBox.Text = currentPerson.State;
             zipCodeTxtBox.Text = currentPerson.ZipCode;
+            phoneNumberTxtBox.Text = currentPerson.PhoneNumber;
 
             // Disabling and hiding buttons that are not needed
             // at the moment
@@ -51,6 +53,7 @@ namespace AddressBook
             cityTxtBox.Enabled = true;
             stateTxtBox.Enabled = true;
             zipCodeTxtBox.Enabled = true;
+            phoneNumberTxtBox.Enabled = true;
 
             // Enabling and disabling buttons for editing contact information
             SetVisibilityAndEnableDisableButton(editContactBtn, false);
@@ -63,7 +66,7 @@ namespace AddressBook
             this.Text = "Edit Contact";
 
             // Changes the size of the form to get rid of wasted space
-            this.Size = new Size(317, 267);
+            this.Size = new Size(317, 283);
         }
 
         /// <summary>
@@ -84,6 +87,7 @@ namespace AddressBook
             cityTxtBox.Enabled = false;
             stateTxtBox.Enabled = false;
             zipCodeTxtBox.Enabled = false;
+            phoneNumberTxtBox.Enabled = false;
 
             // Enabling and disabling buttons
             SetVisibilityAndEnableDisableButton(saveBtn, false);
@@ -93,7 +97,7 @@ namespace AddressBook
             SetVisibilityAndEnableDisableButton(mailLblBtn, true);
 
             // Changing the size of the form back to its original
-            this.Size = new Size(317, 337);
+            this.Size = new Size(317, 322);
             // Changing the name of the form to view contact
             this.Text = "View Contact";
         }
@@ -103,10 +107,30 @@ namespace AddressBook
         /// </summary>
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            currentPerson.Address = addressTxtBox.Text;
-            currentPerson.City = cityTxtBox.Text;
-            currentPerson.State = stateTxtBox.Text;
-            currentPerson.ZipCode = zipCodeTxtBox.Text;
+            if (addressTxtBox.Text.Trim() != string.Empty && cityTxtBox.Text.Trim() != string.Empty &&
+                stateTxtBox.Text.Trim() != string.Empty && zipCodeTxtBox.Text.Trim() != string.Empty &&
+                phoneNumberTxtBox.Text.Trim() != string.Empty)
+            {
+                currentPerson.Address = addressTxtBox.Text;
+                currentPerson.City = cityTxtBox.Text;
+                currentPerson.State = stateTxtBox.Text;
+                currentPerson.ZipCode = zipCodeTxtBox.Text;
+                currentPerson.PhoneNumber = phoneNumberTxtBox.Text;
+                Regex regex = new Regex(@"^\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$");
+                if (!regex.IsMatch(phoneNumberTxtBox.Text))
+                {
+                    MessageBox.Show("Phone number must be formatted in one of the following types\n" +
+                        "(555) 555-5555\n" +
+                        "555 555 5555\n" +
+                        "555-555-555");
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("A field cannot be left blank.");
+                return;
+            }
 
             // Verifies that information has changed
             if (!PersonDB.CheckForChanges(currentPerson))
