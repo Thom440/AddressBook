@@ -55,6 +55,7 @@ namespace AddressBook.Class
                      && p.Address == person.Address && p.City == person.City && p.State == person.State
                      && p.ZipCode == person.ZipCode && p.PersonID == person.PersonID
                      && p.AddressBook.AddressBookID == person.AddressBook.AddressBookID
+                     && p.PhoneNumber == person.PhoneNumber
                      select p).Any();
             }
         }

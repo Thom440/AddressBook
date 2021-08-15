@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -41,15 +42,26 @@ namespace AddressBook
             string city = cityTxtBox.Text;
             string state = stateTxtBox.Text;
             string zipCode = zipCodeTxtBox.Text;
+            string phoneNumber = phoneNumberTxtBox.Text;
 
             // If there is an empty field a message will show alerting the user
-            if (firstName == string.Empty || lastName == string.Empty || address == string.Empty ||
-                city == string.Empty || state == string.Empty || zipCode == string.Empty)
+            if (firstName.Trim() == string.Empty || lastName.Trim() == string.Empty || address.Trim() == string.Empty ||
+                city.Trim() == string.Empty || state.Trim() == string.Empty || zipCode.Trim() == string.Empty || 
+                phoneNumber.Trim() == string.Empty)
             {
                 MessageBox.Show("All fields are required");
             }
             else
             {
+                Regex regex = new Regex(@"^\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$");
+                if (!regex.IsMatch(phoneNumber))
+                {
+                    MessageBox.Show("Phone number must be formatted in one of the following types\n" +
+                        "(555) 555-5555\n" +
+                        "555 555 5555\n" +
+                        "555-555-555");
+                    return;
+                }
                 Person person = new Person()
                 {
                     FirstName = firstName,
@@ -57,7 +69,8 @@ namespace AddressBook
                     Address = address,
                     City = city,
                     State = state,
-                    ZipCode = zipCode
+                    ZipCode = zipCode,
+                    PhoneNumber = phoneNumber
                 };
                 person.AddressBook = AddressDB.GetCurrentAddressBook(CurrentAddressBook.AddressBookID);
 

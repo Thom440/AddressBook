@@ -46,11 +46,13 @@ namespace AddressBook
             this.mailLblBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
+            this.phoneNumberTxtBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // closeBtn
             // 
-            this.closeBtn.Location = new System.Drawing.Point(159, 185);
+            this.closeBtn.Location = new System.Drawing.Point(159, 202);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(124, 32);
             this.closeBtn.TabIndex = 27;
@@ -60,7 +62,7 @@ namespace AddressBook
             // 
             // editContactBtn
             // 
-            this.editContactBtn.Location = new System.Drawing.Point(15, 185);
+            this.editContactBtn.Location = new System.Drawing.Point(15, 202);
             this.editContactBtn.Name = "editContactBtn";
             this.editContactBtn.Size = new System.Drawing.Size(124, 32);
             this.editContactBtn.TabIndex = 26;
@@ -75,7 +77,7 @@ namespace AddressBook
             this.zipCodeTxtBox.MaxLength = 5;
             this.zipCodeTxtBox.Name = "zipCodeTxtBox";
             this.zipCodeTxtBox.Size = new System.Drawing.Size(206, 20);
-            this.zipCodeTxtBox.TabIndex = 25;
+            this.zipCodeTxtBox.TabIndex = 4;
             // 
             // label6
             // 
@@ -92,7 +94,7 @@ namespace AddressBook
             this.stateTxtBox.Location = new System.Drawing.Point(77, 118);
             this.stateTxtBox.Name = "stateTxtBox";
             this.stateTxtBox.Size = new System.Drawing.Size(206, 20);
-            this.stateTxtBox.TabIndex = 23;
+            this.stateTxtBox.TabIndex = 3;
             // 
             // label5
             // 
@@ -109,7 +111,7 @@ namespace AddressBook
             this.cityTxtBox.Location = new System.Drawing.Point(77, 89);
             this.cityTxtBox.Name = "cityTxtBox";
             this.cityTxtBox.Size = new System.Drawing.Size(206, 20);
-            this.cityTxtBox.TabIndex = 21;
+            this.cityTxtBox.TabIndex = 2;
             // 
             // label4
             // 
@@ -126,7 +128,7 @@ namespace AddressBook
             this.addressTxtBox.Location = new System.Drawing.Point(77, 57);
             this.addressTxtBox.Name = "addressTxtBox";
             this.addressTxtBox.Size = new System.Drawing.Size(206, 20);
-            this.addressTxtBox.TabIndex = 19;
+            this.addressTxtBox.TabIndex = 1;
             // 
             // label3
             // 
@@ -183,7 +185,7 @@ namespace AddressBook
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(15, 185);
+            this.saveBtn.Location = new System.Drawing.Point(15, 202);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(124, 32);
             this.saveBtn.TabIndex = 29;
@@ -193,7 +195,7 @@ namespace AddressBook
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(159, 185);
+            this.cancelBtn.Location = new System.Drawing.Point(159, 202);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(124, 32);
             this.cancelBtn.TabIndex = 30;
@@ -201,11 +203,31 @@ namespace AddressBook
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
+            // phoneNumberTxtBox
+            // 
+            this.phoneNumberTxtBox.Enabled = false;
+            this.phoneNumberTxtBox.Location = new System.Drawing.Point(100, 176);
+            this.phoneNumberTxtBox.Name = "phoneNumberTxtBox";
+            this.phoneNumberTxtBox.Size = new System.Drawing.Size(183, 20);
+            this.phoneNumberTxtBox.TabIndex = 5;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 179);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 13);
+            this.label7.TabIndex = 32;
+            this.label7.Text = "Phone Number";
+            // 
             // ViewContact
             // 
+            this.AcceptButton = this.saveBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(301, 298);
+            this.ClientSize = new System.Drawing.Size(301, 283);
+            this.Controls.Add(this.phoneNumberTxtBox);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.mailLblBtn);
@@ -250,5 +272,7 @@ namespace AddressBook
         private System.Windows.Forms.Button mailLblBtn;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Button cancelBtn;
+        private System.Windows.Forms.TextBox phoneNumberTxtBox;
+        private System.Windows.Forms.Label label7;
     }
 }
