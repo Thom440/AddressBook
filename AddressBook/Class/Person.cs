@@ -31,6 +31,12 @@ namespace AddressBook.Class
         public string LastName { get; set; }
 
         /// <summary>
+        /// If there is a duplicate name in the address book
+        /// then there will be a number (1), (2) to tell them apart
+        /// </summary>
+        public string Number { get; set; }
+
+        /// <summary>
         /// The contacts street address
         /// </summary>
         [Required]
@@ -69,7 +75,14 @@ namespace AddressBook.Class
         /// </summary>
         public override string ToString()
         {
-            return $"{FirstName} {LastName}";
+            if (Number != null)
+            {
+                return $"{FirstName} {LastName} {Number}";
+            }
+            else
+            {
+                return $"{FirstName} {LastName}";
+            }
         }
 
         /// <summary>
