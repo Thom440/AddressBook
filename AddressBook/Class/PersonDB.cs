@@ -138,5 +138,27 @@ namespace AddressBook.Class
                 context.SaveChanges();
             }
         }
+
+        /// <summary>
+        /// Numbers the duplicates to differentiate between them
+        /// </summary>
+        public static void NumberDuplicates(string firstName, string lastName, int addressBookId)
+        {
+            using(AddressContext context = new AddressContext())
+            {
+                List<Person> people =
+                    (from p in context.People
+                     where p.FirstName == firstName && p.LastName == lastName
+                     && p.AddressBook.AddressBookID == addressBookId
+                     orderby p.PersonID
+                     select p).ToList();
+
+                for (int i = 0; i < people.Count; i++)
+                {
+                    people[i].Number = $"({i + 1})";
+                    SaveChanges(people[i]);
+                }
+            }
+        }
     }
 }
