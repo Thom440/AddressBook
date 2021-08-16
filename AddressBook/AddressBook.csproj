@@ -100,6 +100,10 @@
     <Compile Include="Migrations\202108151818216_PhoneNumber.Designer.cs">
       <DependentUpon>202108151818216_PhoneNumber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108161528130_Numbering.cs" />
+    <Compile Include="Migrations\202108161528130_Numbering.Designer.cs">
+      <DependentUpon>202108161528130_Numbering.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -132,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108151818216_PhoneNumber.resx">
       <DependentUpon>202108151818216_PhoneNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108161528130_Numbering.resx">
+      <DependentUpon>202108161528130_Numbering.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

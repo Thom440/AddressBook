@@ -160,6 +160,12 @@ namespace AddressBook
             if (result == DialogResult.Yes)
             {
                 PersonDB.Delete(person);
+                // If the number identifying the duplicate is not null
+                // redo the numbers to keep them in order
+                if (person.Number != null)
+                {
+                    PersonDB.NumberDuplicates(person.FirstName, person.LastName, currentAddressBook.AddressBookID);
+                }
                 UpdateContactList(currentAddressBook.AddressBookID);
             }
         }

@@ -90,10 +90,11 @@ namespace AddressBook
                         // Prompts the user if they want to save the contact
                         // anyway even though there is a contact with that name
                         // already in the address book
-                        result = MessageBox.Show("Do You want to save anyway?", "Confirmation", MessageBoxButtons.YesNo);
+                        result = MessageBox.Show("Do you want to save anyway?", "Confirmation", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
                             PersonDB.Add(person);
+                            PersonDB.NumberDuplicates(person.FirstName, person.LastName, CurrentAddressBook.AddressBookID);
                             Close();
                         }
                     }
