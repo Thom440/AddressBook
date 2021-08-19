@@ -153,10 +153,18 @@ namespace AddressBook.Class
                      orderby p.PersonID
                      select p).ToList();
 
-                for (int i = 0; i < people.Count; i++)
+                if (people.Count == 1)
                 {
-                    people[i].Number = $"({i + 1})";
-                    SaveChanges(people[i]);
+                    people[0].Number = null;
+                    SaveChanges(people[0]);
+                }
+                else
+                {
+                    for (int i = 0; i < people.Count; i++)
+                    {
+                        people[i].Number = $"({i + 1})";
+                        SaveChanges(people[i]);
+                    }
                 }
             }
         }
