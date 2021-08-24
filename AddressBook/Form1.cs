@@ -1,8 +1,10 @@
 ﻿using AddressBook.Class;
+using AddressBook.Migrations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,6 +21,7 @@ namespace AddressBook
 
         public Form1()
         {
+            Database.SetInitializer<AddressContext>(new MigrateDatabaseToLatestVersion<AddressContext, Configuration>());
             InitializeComponent();
         }
 
