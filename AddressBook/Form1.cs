@@ -117,7 +117,7 @@ namespace AddressBook
             {
                 AddressDB.Delete(addressBook);
             }
-            
+            UpdateListBox();
         }
 
         /// <summary>
