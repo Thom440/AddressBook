@@ -82,8 +82,8 @@ namespace AddressBook
                     if (result == DialogResult.Yes)
                     {
                         ViewContact viewContact = new ViewContact(PersonDB.GetExistingPerson(person.FirstName, person.LastName, CurrentAddressBook.AddressBookID));
-                        viewContact.Show();
-                        Close();
+                        this.Dispose();
+                        viewContact.ShowDialog();
                     }
                     else
                     {
