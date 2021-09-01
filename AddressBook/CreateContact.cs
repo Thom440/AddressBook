@@ -59,7 +59,7 @@ namespace AddressBook
                     MessageBox.Show("Phone number must be formatted in one of the following types\n" +
                         "(555) 555-5555\n" +
                         "555 555 5555\n" +
-                        "555-555-555");
+                        "555-555-5555");
                     return;
                 }
                 Person person = new Person()
